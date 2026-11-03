@@ -2,8 +2,7 @@
 
 Dashboard Streamlit de análise dos hábitos de estudo e desempenho acadêmico de 1.000 estudantes. Trabalho de Análise e Visualização de Dados — Cesar School, 2026.2.
 
-**Aplicação pública:** `COLE_AQUI_O_LINK_DO_STREAMLIT_APOS_O_DEPLOY`  
-**Repositório público:** `COLE_AQUI_O_LINK_DO_SEU_REPOSITORIO`
+**Aplicação pública:** `https://avd-20262-pratica-app-gabi.streamlit.app/`
 
 ## Painéis
 
