@@ -169,47 +169,38 @@ with tab1:
             st.markdown("**Distribuição das variáveis**")
 
             if variaveis:
-                var_selecionada = st.selectbox(
-                    "Escolha uma variável:",
-                    options=variaveis,
-                    index=0,
-                    format_func=lambda var: NOMES_VARIAVEIS[var],
-                )
-
                 color_col = (
                     "status_aprovacao" if separar_por_classe else None
                 )
 
-                fig_hist = px.histogram(
-                    df_filtrado,
-                    x=var_selecionada,
-                    color=color_col,
-                    labels=NOMES_VARIAVEIS,
-                    marginal="box",
-                    barmode=(
-                        "overlay" if separar_por_classe else "relative"
-                    ),
-                    opacity=0.7,
-                    color_discrete_map={
-                        "Aprovado": "#2563EB",
-                        "Reprovado": "#FB7185",
-                    },
-                    title=(
-                        f"Distribuição de "
-                        f"{NOMES_VARIAVEIS[var_selecionada]}"
-                    ),
-                )
+                for var in variaveis:
+                    fig_hist = px.histogram(
+                        df_filtrado,
+                        x=var,
+                        color=color_col,
+                        labels=NOMES_VARIAVEIS,
+                        marginal="box",
+                        barmode=(
+                            "overlay" if separar_por_classe else "relative"
+                        ),
+                        opacity=0.7,
+                        color_discrete_map={
+                            "Aprovado": "#2563EB",
+                            "Reprovado": "#FB7185",
+                        },
+                        title=f"Distribuição de {NOMES_VARIAVEIS[var]}",
+                    )
 
-                fig_hist.update_layout(
-                    xaxis_title=NOMES_VARIAVEIS[var_selecionada],
-                    yaxis_title="Quantidade de estudantes",
-                    margin=dict(l=20, r=20, t=40, b=20),
-                )
+                    fig_hist.update_layout(
+                        xaxis_title=NOMES_VARIAVEIS[var],
+                        yaxis_title="Quantidade de estudantes",
+                        margin=dict(l=20, r=20, t=40, b=20),
+                    )
 
-                st.plotly_chart(
-                    fig_hist,
-                    use_container_width=True,
-                )
+                    st.plotly_chart(
+                        fig_hist,
+                        use_container_width=True,
+                    )
             else:
                 st.info(
                     "Selecione ao menos uma variável no menu lateral."
